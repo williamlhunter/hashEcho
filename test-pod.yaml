@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-test-pod
+  labels:
+    app: echo-server
+spec:
+  nodeName: kube00
+  containers:
+    - name: echo-hash
+      image: echo-server:latest
+      imagePullPolicy: Never
+      resources:
+        requests:
+          memory: "32Mi"
+          cpu: "500m"
+        limits:
+          memory: "1536Mi"
+          cpu: "1"
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 8080
+        initialDelaySeconds: 5
+        periodSeconds: 10
