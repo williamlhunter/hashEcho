@@ -1,1 +1,0 @@
- - find a way to test readiness and test probes
