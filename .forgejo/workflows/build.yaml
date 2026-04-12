@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: docker
+    container:
+      image: golang:1.22
+    steps:
+      - uses: actions/checkout@v4
+      - run: go build -o app .
