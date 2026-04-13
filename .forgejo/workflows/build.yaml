@@ -15,10 +15,6 @@ jobs:
             curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-27.5.1.tgz | tar xz
             mv docker/docker /usr/local/bin/
             rm -rf docker
-      - run: docker info
-      - run: |
-            mkdir -p /etc/docker
-            echo '{"insecure-registries":["forgejo-http:3000"]}' > /etc/docker/daemon.json
-            docker login --username whunter --password ${{ secrets.REGISTRY_TOKEN }} forgejo-http:3000
-      - run: docker build -t http://forgejo-http:3000/whunter/hashecho:latest .
-      - run: docker push http://forgejo-http:3000/whunter/hashecho:latest
+      - run: docker login --username whunter --password ${{ secrets.REGISTRY_TOKEN }} forgejo-http:3000
+      - run: docker build -t forgejo-http:3000/whunter/hashecho:latest .
+      - run: docker push forgejo-http:3000/whunter/hashecho:latest
