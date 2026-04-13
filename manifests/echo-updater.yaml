@@ -1,0 +1,11 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: echo-updater
+  namespace: argocd
+spec:
+  applicationRefs:
+    - namePattern: "echo-server"
+      images:
+        - alias: "app"
+          imageName: "git.home.williamlhunter.com/whunter/hashecho:latest"
