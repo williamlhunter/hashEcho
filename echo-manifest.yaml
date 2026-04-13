@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: forgejo-http:3000/whunter/hashecho
+    repoURL: https://git.home.williamlhunter.com/whunter/hashecho
     targetRevision: HEAD
     path: manifests
   destination:
