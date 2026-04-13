@@ -16,5 +16,9 @@ jobs:
             mv docker/docker /usr/local/bin/
             rm -rf docker
       - run: docker login --username whunter --password ${{ secrets.REGISTRY_TOKEN }} git.home.williamlhunter.com
-      - run: docker build -t git.home.williamlhunter.com/whunter/hashecho:latest .
-      - run: docker push git.home.williamlhunter.com/whunter/hashecho:latest
+      - run: |
+          TAG=$(git rev-parse --short HEAD)
+          docker build -t git.home.williamlhunter.com/whunter/hashecho:$TAG .
+          docker tag git.home.williamlhunter.com/whunter/hashecho:$TAG git.home.williamlhunter.com/whunter/hashecho:latest
+          docker push git.home.williamlhunter.com/whunter/hashecho:$TAG
+          docker push git.home.williamlhunter.com/whunter/hashecho:latest
