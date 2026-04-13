@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: echo-server
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: echo-server=git.home.williamlhunter.com/whunter/hashecho
+    argocd-image-updater.argoproj.io/hashecho.update-strategy: newest-build
 spec:
   project: default
   source:
