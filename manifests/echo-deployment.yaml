@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: echo-server
-        image: forgejo-http:3000/whunter/hashecho:latest
+        image: git.home.williamlhunter.com/whunter/hashecho:latest
         ports:
         - containerPort: 8080
         resources:
