@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
       - name: echo-server
-        image: echo-server:latest
-        imagePullPolicy: Never
+        image: forgejo-http:3000/whunter/hashecho:latest
         ports:
         - containerPort: 8080
         resources:
